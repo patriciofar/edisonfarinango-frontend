@@ -48,7 +48,7 @@ export class GenerateProductComponent implements OnInit {
       dateRevision: ['', [Validators.required]],
     });
 
-    if (!this.receivedData) {
+    if (!this.receivedData?.extras?.state?.response?.data.product) {
       this.router.navigate(['/products/generate']);
     } else {
       this.selectedProduct = this.receivedData.extras.state.response.data.product;
