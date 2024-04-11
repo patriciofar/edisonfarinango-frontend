@@ -1,0 +1,61 @@
+<div class="container">
+    <input type="text" class="textbox" placeholder="Search..." [(ngModel)]="searchProduct" placeholder="Buscar..." (input)="filterProducts()">>
+    <button [routerLink]="['/products/generate']" class="button">Agregar</button>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th id="col-logo">Logo</th>
+                <th id="col-name">Nombre del Producto</th>
+                <th id="col-description">Descripción</th>
+                <th id="col-date">Fecha de liberación</th>
+                <th id="col-date">Fecha de reestructuración</th>
+                <th id="col-date"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of listProductPresenter.listProduct; let i = index">
+                <td><img class="img-table" [src]="product.logo" alt="Product Logo"></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.dateRelease | date:'dd/MM/yyy' }}</td>
+                <td>{{ product.dateRevision | date:'dd/MM/yyy' }}</td>
+                <td>
+
+                    <button id="btn-{{product.id}}" class="icon-button" (click)="showContextMenu(i)">
+                        <i class="fa-solid fa-ellipsis-vertical options"></i>
+                    </button>
+
+                    <div id="modal-{{product.id}}" class="context-menu" *ngIf="selectedRowIndex === i && showMenu">
+                        <ul>
+                            <li (click)="showModalUpdate(product)">Editar</li>
+                            <li (click)="showModalDelete(product)">Eliminar</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="footer-container">
+    <label class="footer-text"> {{listProductPresenter.totalItems}} resultados</label>
+    <select class="custom-select">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+    </select>
+</div>
+
+<div class="modal" *ngIf="isShowModal">
+    <div class="modal-content">
+        <label class="text-modal">¿Estás seguro de eliminar el producto {{ selectedProduct.name }}?</label>
+        <hr class="separator">
+        <div class="container-options">
+            <button (click)="closeModalProduct()" class="button-s">Cancelar</button>
+            <button (click)="confirmDeleteProduct()" class="button-p">Confirmar</button>
+        </div>
+    </div>
+</div>

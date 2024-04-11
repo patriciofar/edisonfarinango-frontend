@@ -1,0 +1,86 @@
+<div class="container-form">
+    <label class="title-form-text">Formulario de Registro</label>
+    <hr class="separator">
+    <div class="content">
+        <form [formGroup]="formProduct">
+            <div class="row">
+                <div class="col">
+                    <div class="content-group">
+                        <label class="form-text body" for="id">ID</label>
+                        <input type="text" class="textbox" name="id" id="id" formControlName="id" maxlength="11"
+                            [ngClass]="{ 'is-invalid': submitted && f['id'].errors }" autocomplete="off">
+                        <div *ngIf="submitted && f['id'].errors" class="invalid-feedback">
+                            <div *ngIf="f['id'].errors['required']">ID es requerido</div>
+                            <div *ngIf="f['id'].errors['minlength']">Mínimo 3 caracteres</div>
+                            <div *ngIf="f['id'].errors['maxlength']">Máximo 10 caracteres</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content-group">
+                        <label class="form-text" for="name">Nombre</label>
+                        <input type="text" formControlName="name" name="name" id="name" class="textbox" maxlength="101"
+                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" autocomplete="off" />
+                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors['required']">Nombre es requerido</div>
+                            <div *ngIf="f['name'].errors['minlength']">Mínimo 5 caracteres</div>
+                            <div *ngIf="f['name'].errors['maxlength']">Máximo 100 caracteres</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="content-group">
+                        <label class="form-text" for="description">Descripción:</label>
+                        <input type="text" class="textbox" id="description" formControlName="description"
+                            maxlength="201" [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+                            autocomplete="off">
+                        <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                            <div *ngIf="f['description'].errors['required']">Descripción es requerido</div>
+                            <div *ngIf="f['description'].errors['minlength']">Mínimo 10 caracteres</div>
+                            <div *ngIf="f['description'].errors['maxlength']">Máximo 200 caracteres</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content-group">
+                        <label class="form-text" for="logo">Logo</label>
+                        <input type="text" class="textbox" name="logo" id="logo" formControlName="logo">
+                        <div *ngIf="submitted && f['logo'].errors" class="invalid-feedback">
+                            <div *ngIf="f['logo'].errors['required']">Logo es requerido</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="content-group">
+                        <label class="form-text" for="dateRelease">Fecha Liberación</label>
+                        <input type="text" class="textbox" id="dateRelease" formControlName="dateRelease"
+                            [ngClass]="{ 'is-invalid': submitted && f['dateRelease'].errors }" autocomplete="off" />
+                        <div *ngIf="submitted && f['dateRelease'].errors" class="invalid-feedback">
+                            <div *ngIf="f['dateRelease'].errors['required']">Fecha es requerido</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="content-group">
+                        <label class="form-text" for="dateRevision">Fecha Revisión</label>
+                        <input type="text" class="textbox" id="dateRevision" formControlName="dateRevision"
+                            [ngClass]="{ 'is-invalid': submitted && f['dateRevision'].errors }" autocomplete="off" />
+                        <div *ngIf="submitted && f['dateRevision'].errors" class="invalid-feedback">
+                            <div *ngIf="f['dateRevision'].errors['required']">Fecha es requerido</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="container">
+            <button (click)="clearForm()" class="button-s">Reiniciar</button>
+            <button (click)="saveProduct()" class="button-p">Enviar</button>
+        </div>
+
+    </div>
+</div>

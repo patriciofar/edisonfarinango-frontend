@@ -1,0 +1,97 @@
+@mixin rounded-borders($radius: 4px) {
+    border-radius: $radius;
+}
+
+$border-color: #ccc;
+$secondary-color: #0f265c;
+$cancel-color: #F1F3F4;
+$primary-color: #FFDD00;
+
+.textbox {
+    @include rounded-borders(5px);
+    padding: 10px;
+    border: 2px solid $border-color;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px 0px 30px 0px;
+}
+
+.container-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff !important;
+    height: 70vh;
+    width: 40%;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.content {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.form-text {
+    color: $secondary-color;
+    font-family: "arial";
+    font-style: normal;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+
+.title-form-text {
+    color: $secondary-color;
+    font-family: "arial";
+    font-style: normal;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 10px 0px 10px 0px;
+}
+
+.content-group {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.separator {
+    border-top: 2px solid #ccc;
+    width: 100%;
+}
+
+.button-p {
+    @include rounded-borders(5px);
+    padding: 10px 20px;
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
+    color: $secondary-color;
+    cursor: pointer;
+}
+
+.button-s {
+    @include rounded-borders(5px);
+    padding: 10px 20px;
+    background-color: $cancel-color;
+    border: 1px solid $cancel-color;
+    color: $secondary-color;
+    cursor: pointer;
+}
+
+.invalid-feedback {
+    color: red;
+    font-family: "arial";
+    font-style: normal;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
+}
